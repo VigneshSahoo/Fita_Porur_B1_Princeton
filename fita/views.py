@@ -85,7 +85,4 @@ def login_page(request):
 
 
 def dashboard(request):
-    context = {}
-    return render(request,
-                  'dash.html',
-                  context)
+    return render(request, 'dash.html',)
