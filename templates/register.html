@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div class="top-bar"> <!-- Assume this is the top bar you mentioned -->
+
+</div>
+<div class="login-form" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; padding: 0;">
+    <h1 style="text-align: center;">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" width="150px"> <!-- Replace "logo.png" with your logo image path -->
+        <br>
+        Create Account
+    </h1>
+    <form method="POST" action="" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px;">
+        {% csrf_token %}
+        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+        {{ form.username }}
+        <br>
+        <br>
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        {{ form.email }}
+        <br>
+        <br>
+        <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+        {{ form.password1 }}
+        <br>
+        <br>
+        <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+        {{ form.password2 }}
+        <br>
+        <br>
+        <input type="submit" value="Submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+        {{ form.errors }}
+    </form>
+</div>
+</body>
+</html>
+{% endblock content %}

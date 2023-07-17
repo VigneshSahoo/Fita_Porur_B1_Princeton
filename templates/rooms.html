@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'wrapper.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+</head>
+<body>
+<h1>
+  Welcome to Classrooms!
+    <br>
+        {% for rooms in classrooms %}
+
+        <br>{{ rooms.id }}: <a href="/room_page/{{rooms.id}}">
+                            {{ rooms.name }}</a>
+
+        {% endfor %}
+</h1>
+</body>
+</html>
+{% endblock content %}
