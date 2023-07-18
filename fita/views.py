@@ -3,16 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
-
-classrooms = [
-    {'id': 1, 'name': 'Harvard'},
-    {'id': 2, 'name': 'Nalanda'},
-    {'id': 3, 'name': 'Princeton'},
-    {'id': 4, 'name': 'Imperial'},
-    {'id': 5, 'name': 'Oxford'},
-    {'id': 6, 'name': 'Fita'},
-]
+from .models import Rooms
 
 
 def welcome(request):
@@ -32,6 +23,7 @@ def index(request):
 
 
 def rooms(request):
+    classrooms = Rooms.objects.all()
     context = {'classrooms': classrooms}
     return render(request,
                   'rooms.html',
@@ -39,6 +31,7 @@ def rooms(request):
 
 
 def pages(request, pk):
+    classrooms = Rooms.objects.all()
     room = None
     for i in classrooms:
         if i['id'] == int(pk):
@@ -72,17 +65,18 @@ def register(request):
 
 
 def login_page(request):
-    loginform = CustomForm
     if request.method == 'POST':
         username = request.POST.get('uname')
         password = request.POST.get('psw')
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request,
+                            username=username,
+                            password=password)
         if user is not None:
             login(request, user)
             return redirect('dash')
         else:
             messages.error(request, "Invalid Login!")
-    context = {'login': loginform}
+    context = {}
     return render(request, 'login.html', context)
 
 
