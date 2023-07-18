@@ -65,6 +65,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login_page')
+        else:
+            messages.error(request, 'Registration Failed')
     context = {'form': form}
     return render(request, 'register.html', context)
 
@@ -82,6 +84,11 @@ def login_page(request):
             messages.error(request, "Invalid Login!")
     context = {'login': loginform}
     return render(request, 'login.html', context)
+
+
+def logoutfunc(request):
+    logout(request)
+    return render(request, 'login.html')
 
 
 def dashboard(request):

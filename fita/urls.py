@@ -32,6 +32,8 @@ urlpatterns = [
          name='register'),
     path('login/', views.login_page,
          name='login_page'),
+    path('logout/', views.logoutfunc,
+         name='logout'),
     path('dashboard/', views.dashboard,
          name='dash'),
 
