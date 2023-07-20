@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Rooms
 
 
@@ -22,6 +23,7 @@ def index(request):
                   'index.html')
 
 
+@login_required(login_url='login_page')
 def rooms(request):
     classrooms = Rooms.objects.all()
     context = {'classrooms': classrooms}
