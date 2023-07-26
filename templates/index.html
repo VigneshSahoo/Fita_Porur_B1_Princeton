@@ -8,17 +8,57 @@
 </head>
 <body>
 <div class="home-content"><h1 style="text-align: justify;">FITA Academy</h1>
-<p style="text-align: justify;">FITA (Focus’d IT Academy) is a leading Training and Placement company managed by IT veterans with more than a decade of experience in leading MNC companies. We are spread across cities like Chennai, Bangalore, Madurai, and Coimbatore. We are known for our practical approach towards training that enables students to gain real-time exposure on competitive technologies. Training is offered by employees from MNCs to give real corporate exposure to the students.</p>
-<h3>Why FITA Academy Is The Best Training Institute In Chennai?</h3>
-<ul class="liststyleOption">
-<li>Helped more than 50,000+ students and professionals to start &amp; shift their Career into IT</li>
-<li>We enroll only 5-6 students per batch so that individual attention to each and every student is guaranteed</li>
-<li>We have placement tie-up with more than 1500+ companies. Our Placement team works tirelessly to help you get your dream IT job!</li>
-<li>Trainers from leading IT companies to provide an in-depth and practical training with real-time projects</li>
-<li>Unlimited Lab Usage.</li>
-<li>Branches at Chennai – Velachery, Anna Nagar, T Nagar, Tambaram, Porur and Thoraipakkam (OMR). Bangalore – Marathahalli. Coimbatore – Saravanampatty, Singanallur. Madurai – Arapalayam.</li>
-</ul>
+    <p style="text-align: justify;">FITA (Focus’d IT Academy) is a leading Training and Placement company managed by IT
+        veterans with more than a decade of experience in leading MNC companies. We are spread across cities like
+        Chennai, Bangalore, Madurai, and Coimbatore. We are known for our practical approach towards training that
+        enables students to gain real-time exposure on competitive technologies. Training is offered by employees from
+        MNCs to give real corporate exposure to the students.</p>
+    <h3>Why FITA Academy Is The Best Training Institute In Chennai?</h3>
+    <ul class="liststyleOption">
+        <li>Helped more than 50,000+ students and professionals to start &amp; shift their Career into IT</li>
+        <li>We enroll only 5-6 students per batch so that individual attention to each and every student is guaranteed
+        </li>
+        <li>We have placement tie-up with more than 1500+ companies. Our Placement team works tirelessly to help you get
+            your dream IT job!
+        </li>
+        <li>Trainers from leading IT companies to provide an in-depth and practical training with real-time projects
+        </li>
+        <li>Unlimited Lab Usage.</li>
+        <li>Branches at Chennai – Velachery, Anna Nagar, T Nagar, Tambaram, Porur and Thoraipakkam (OMR). Bangalore –
+            Marathahalli. Coimbatore – Saravanampatty, Singanallur. Madurai – Arapalayam.
+        </li>
+    </ul>
 </div>
 </body>
 </html>
+<hr>
+<h2>List of Students:</h2>
+{% for i in form %}
+First Name: {{ i.first_name }}
+<br>
+Last Name: {{ i.last_name }}
+<br>
+Course Name: {{ i.course_name }}
+    <br>
+    <br>
+{% endfor %}
+<hr>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <br>
+    <br>
+    First Name: {{ b.first_name }}
+    <br>
+    <br>
+    Last Name: {{ b.last_name }}
+    <br>
+    <br>
+    Course Name: {{ b.course_name }}
+    <br>
+    <br>
+    <input type="submit" value="Register">
+</form>
+    <br>
+    <br>
 {% endblock content %}

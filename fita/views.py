@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Rooms
+from .models import Rooms, StudentForm, Students
 
 
 def welcome(request):
@@ -19,8 +19,14 @@ def welcome(request):
 
 
 def index(request):
-    return render(request,
-                  'index.html')
+    a = Students.objects.all()
+    b = StudentForm()
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': a, 'b': b}
+    return render(request, 'index.html', context)
 
 
 @login_required(login_url='login_page')
