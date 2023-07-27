@@ -1,31 +1,9 @@
-<style>
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: sans-serif;
-  }
-
-  .right-side {
-    display: flex;
-    gap: 10px;
-  }
-
-  .fita-link {
-    font-size: calc(1em + 1px); /* Increase font size by 2 points */
-  }
-</style>
-
-<div class="container">
-  <a href="/" class="fita-link">FITA</a>
-  <div class="right-side">
-    <a href="{% url 'register' %}">Register</a>
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'login_page' %}">Login</a>
-    {% endif %}
-    <a href="//localhost/rooms/">Rooms</a>
-  </div>
-</div>
+<a href="/" class="fita-link">FITA</a>
+<a href="{% url 'register' %}">Register</a>
+{% if request.user.is_authenticated %}
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login_page' %}">Login</a>
+{% endif %}
+<a href="//localhost/rooms/">Rooms</a>
 <hr>
